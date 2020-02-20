@@ -15,7 +15,6 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void show() {
-
         super.show();
         img = new Texture("badlogic.jpg");
         touch = new Vector2();
