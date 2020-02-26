@@ -1,0 +1,26 @@
+
+menu_atlas.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+play
+  rotate: false
+  xy: 1, 40
+  size: 295, 294
+  orig: 295, 294
+  offset: 0, 0
+  index: -1
+exit
+  rotate: false
+  xy: 298, 100
+  size: 234, 234
+  orig: 234, 234
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 1, 1
+  size: 35, 37
+  orig: 35, 37
+  offset: 0, 0
+  index: -1
