@@ -10,35 +10,40 @@ import ru.elenakuropatkina.math.Rect;
 
 public class Logo extends Sprite {
 
-    Vector2 v;
+    private Vector2 touch, v, temp;
+    public static final float V = 0.001f;
 
     public Logo(Texture region) {
 
         super(new TextureRegion(region));
-        this.v = new Vector2(0, 0.001f);
+        v = new Vector2();
+        touch = new Vector2();
+        temp = new Vector2();
+
     }
 
     @Override
     public void resize(Rect worldBounds) {
-        super.resize(worldBounds);
         setHeightProportion(0.2f);
-        this.pos.set(worldBounds.pos);
-    }
-    @Override
-    public void draw(SpriteBatch batch) {
-        super.draw(batch);
-        update(1f);
     }
 
     @Override
     public void touchDown(Vector2 touch, int pointer, int button) {
-        super.touchDown(touch, pointer, button);
+        this.touch.set(touch);
+        v.set(touch.sub(pos)).setLength(V);
+        System.out.println(v);
 
     }
 
     @Override
     public void update(float delta) {
-        pos.add(v);
+        temp.set(touch);
+        if(temp.sub(pos).len() > V){
+            pos.add(v);
+        } else
+            pos.set(touch);
+
+
     }
 
 
