@@ -9,21 +9,33 @@ import com.badlogic.gdx.math.Vector2;
 import ru.elenakuropatkina.base.BaseScreen;
 import ru.elenakuropatkina.math.Rect;
 import ru.elenakuropatkina.sprite.Background;
+import ru.elenakuropatkina.sprite.Ship;
+import ru.elenakuropatkina.sprite.Star;
 
 
 public class GameScreen extends BaseScreen {
 
-    //private TextureAtlas atlas;
+    private TextureAtlas atlasMenu, atlasShip;
+
+    private static final int STAR_COUNT = 128;
 
     private Texture bg;
     private Background background;
+    private Ship ship;
+    private Star[] stars;
 
     @Override
     public void show() {
         super.show();
         bg = new Texture("bg.jpg");
         background = new Background(bg);
-        //atlas = new TextureAtlas(Gdx.files.internal("main_atlas.pack"));
+        atlasShip = new TextureAtlas(Gdx.files.internal("atlasShip.pack"));
+        atlasMenu = new TextureAtlas(Gdx.files.internal("atlasMenu.pack"));
+        ship = new Ship(atlasShip);
+        stars = new Star[STAR_COUNT];
+        for (int i = 0; i < STAR_COUNT; i++) {
+            stars[i] = new Star(atlasMenu);
+        }
     }
 
     @Override
@@ -36,12 +48,17 @@ public class GameScreen extends BaseScreen {
     public void resize(Rect worldBounds) {
         super.resize(worldBounds);
         background.resize(worldBounds);
+        ship.resize(worldBounds);
+        for (Star star : stars) {
+            star.resize(worldBounds);
+        }
     }
 
     @Override
     public void dispose() {
         bg.dispose();
-        //atlas.dispose();
+        atlasMenu.dispose();
+        atlasShip.dispose();
         super.dispose();
     }
 
@@ -57,7 +74,8 @@ public class GameScreen extends BaseScreen {
 
     @Override
     public boolean touchDown(Vector2 touch, int pointer, int button) {
-        return super.touchDown(touch, pointer, button);
+        ship.touchDown(touch, pointer, button);
+        return false;
     }
 
     @Override
@@ -66,6 +84,11 @@ public class GameScreen extends BaseScreen {
     }
 
     private void update(float delta) {
+        ship.update(delta);
+        for (Star star : stars) {
+            star.update(delta);
+        }
+
     }
 
     private void draw() {
@@ -73,6 +96,10 @@ public class GameScreen extends BaseScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         background.draw(batch);
+        ship.draw(batch);
+        for (Star star : stars) {
+            star.draw(batch);
+        }
         batch.end();
     }
 }

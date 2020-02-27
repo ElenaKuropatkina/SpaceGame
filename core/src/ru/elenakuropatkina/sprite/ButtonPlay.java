@@ -10,7 +10,7 @@ import ru.elenakuropatkina.screen.GameScreen;
 
 public class ButtonPlay extends ScaledButton {
 
-    private static final float PADDING = 0.05f;
+    private static final float PADDING = 0.1f;
 
     private final Game game;
 
@@ -21,7 +21,7 @@ public class ButtonPlay extends ScaledButton {
 
     @Override
     public void resize(Rect worldBounds) {
-        setHeightProportion(0.205f);
+        setHeightProportion(0.2f);
         setLeft(worldBounds.getLeft() + PADDING);
         setBottom(worldBounds.getBottom() + PADDING);
     }
