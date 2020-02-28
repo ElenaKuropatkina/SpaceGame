@@ -96,10 +96,10 @@ public class GameScreen extends BaseScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         background.draw(batch);
-        ship.draw(batch);
         for (Star star : stars) {
             star.draw(batch);
         }
+        ship.draw(batch);
         batch.end();
     }
 }
