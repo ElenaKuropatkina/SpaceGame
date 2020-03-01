@@ -1,6 +1,8 @@
 package ru.elenakuropatkina.sprite;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -24,13 +26,15 @@ public class Ship extends Sprite {
     private final Vector2 bulletV;
     private final Vector2 bulletPos;
 
+    private Sound sound;
+
     private boolean pressedLeft;
     private boolean pressedRight;
     private int leftPointer = INVALID_POINTER;
     private int rightPointer = INVALID_POINTER;
 
     private float animateTimer;
-    private float animateInterval = 0.1f;
+    private float animateInterval = 0.3f;
 
     public Ship(TextureAtlas atlas, BulletPool bulletPool) {
         super(atlas.findRegion("shipMain"), 1, 2, 2);
@@ -39,6 +43,7 @@ public class Ship extends Sprite {
         this.bulletV = new Vector2(0, 0.5f);
         this.bulletPos = new Vector2();
         animateTimer = Rnd.nextFloat(0, 1f);
+        sound = Gdx.audio.newSound(Gdx.files.internal("sounds/bullet.wav"));
     }
 
     @Override
@@ -61,8 +66,9 @@ public class Ship extends Sprite {
         }
         animateTimer += delta;
         if (animateTimer >= animateInterval) {
-            animateTimer = 0.01f;
+            animateTimer = 0.1f;
             shoot();
+            sound.play(0.05f);
         }
     }
 
