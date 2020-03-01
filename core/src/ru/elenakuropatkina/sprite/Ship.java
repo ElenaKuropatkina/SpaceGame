@@ -68,7 +68,7 @@ public class Ship extends Sprite {
         if (animateTimer >= animateInterval) {
             animateTimer = 0.1f;
             shoot();
-            sound.play(0.05f);
+            sound.play(0.01f);
         }
     }
 
