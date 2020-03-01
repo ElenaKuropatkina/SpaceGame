@@ -1,0 +1,33 @@
+
+atlasGame.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+shipMain
+  rotate: false
+  xy: 1, 256
+  size: 624, 300
+  orig: 624, 300
+  offset: 0, 0
+  index: -1
+asteroid
+  rotate: false
+  xy: 1, 35
+  size: 624, 219
+  orig: 624, 219
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 627, 524
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+bulletEnemy
+  rotate: false
+  xy: 1, 1
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1

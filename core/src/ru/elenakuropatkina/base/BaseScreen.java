@@ -3,6 +3,7 @@ package ru.elenakuropatkina.base;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix3;
 import com.badlogic.gdx.math.Matrix4;
@@ -14,6 +15,7 @@ import ru.elenakuropatkina.math.Rect;
 public class BaseScreen implements Screen, InputProcessor {
 
     protected SpriteBatch batch;
+    protected Music music;
 
     private Rect screenBounds;
     private Rect worldBounds;
@@ -23,6 +25,8 @@ public class BaseScreen implements Screen, InputProcessor {
 
     private Matrix4 worldToGl;
     private Matrix3 screenToWorld;
+
+
 
     @Override
     public void show() {
@@ -35,6 +39,7 @@ public class BaseScreen implements Screen, InputProcessor {
         worldToGl = new Matrix4();
         screenToWorld = new Matrix3();
         Gdx.input.setInputProcessor(this);
+        music = Gdx.audio.newMusic(Gdx.files.internal("sounds/music.mp3"));
     }
 
     @Override
@@ -82,6 +87,7 @@ public class BaseScreen implements Screen, InputProcessor {
     public void dispose() {
         System.out.println("dispose");
         batch.dispose();
+        music.dispose();
     }
 
     @Override

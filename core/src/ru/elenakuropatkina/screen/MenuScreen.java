@@ -47,6 +47,8 @@ public class MenuScreen extends BaseScreen {
         }
         buttonExit = new ButtonExit(atlas);
         buttonPlay = new ButtonPlay(atlas, game);
+        music.setLooping(true);
+        music.play();
     }
 
     @Override
