@@ -1,6 +1,7 @@
 package ru.elenakuropatkina.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import ru.elenakuropatkina.base.BaseScreen;
 import ru.elenakuropatkina.math.Rect;
+import ru.elenakuropatkina.pool.AsteroidPool;
 import ru.elenakuropatkina.pool.BulletPool;
 import ru.elenakuropatkina.sprite.Background;
 import ru.elenakuropatkina.sprite.Ship;
@@ -26,6 +28,8 @@ public class GameScreen extends BaseScreen {
 
     private Ship ship;
     private BulletPool bulletPool;
+    private AsteroidPool asteroidPool;
+    private Sound soundBullet;
 
     @Override
     public void show() {
@@ -39,7 +43,9 @@ public class GameScreen extends BaseScreen {
             stars[i] = new Star(atlasMenu);
         }
         bulletPool = new BulletPool();
-        ship = new Ship(atlas, bulletPool);
+        asteroidPool = new AsteroidPool();
+        soundBullet = Gdx.audio.newSound(Gdx.files.internal("sounds/bullet.wav"));
+        ship = new Ship(atlas, bulletPool, soundBullet);
         music.setLooping(true);
         music.setVolume(0.5f);
         music.play();
@@ -67,6 +73,8 @@ public class GameScreen extends BaseScreen {
         bg.dispose();
         atlas.dispose();
         bulletPool.dispose();
+        soundBullet.dispose();
+        asteroidPool.dispose();
         super.dispose();
     }
 
@@ -101,11 +109,13 @@ public class GameScreen extends BaseScreen {
         }
         ship.update(delta);
         bulletPool.updateActiveSprites(delta);
+        asteroidPool.updateActiveSprites(delta);
 
     }
 
     private void freeAllDestroyed() {
         bulletPool.freeAllDestroyedActiveObjects();
+        asteroidPool.freeAllDestroyedActiveObjects();
 
     }
 
@@ -119,6 +129,7 @@ public class GameScreen extends BaseScreen {
         }
         ship.draw(batch);
         bulletPool.drawActiveSprites(batch);
+        asteroidPool.drawActiveSprites(batch);
         batch.end();
     }
 }
