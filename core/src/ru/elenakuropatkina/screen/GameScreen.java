@@ -12,7 +12,7 @@ import ru.elenakuropatkina.math.Rect;
 import ru.elenakuropatkina.pool.AsteroidPool;
 import ru.elenakuropatkina.pool.BulletPool;
 import ru.elenakuropatkina.sprite.Background;
-import ru.elenakuropatkina.sprite.Ship;
+import ru.elenakuropatkina.sprite.MyShip;
 import ru.elenakuropatkina.sprite.Star;
 
 
@@ -26,7 +26,7 @@ public class GameScreen extends BaseScreen {
     private Background background;
     private Star[] stars;
 
-    private Ship ship;
+    private MyShip myShip;
     private BulletPool bulletPool;
     private AsteroidPool asteroidPool;
     private Sound soundBullet;
@@ -44,8 +44,8 @@ public class GameScreen extends BaseScreen {
         }
         bulletPool = new BulletPool();
         asteroidPool = new AsteroidPool();
-        soundBullet = Gdx.audio.newSound(Gdx.files.internal("sounds/bullet.wav"));
-        ship = new Ship(atlas, bulletPool, soundBullet);
+        soundBullet = Gdx.audio.newSound(Gdx.files.internal("sounds/laser.wav"));
+        myShip = new MyShip(atlas, bulletPool, soundBullet);
         music.setLooping(true);
         music.setVolume(0.5f);
         music.play();
@@ -65,7 +65,7 @@ public class GameScreen extends BaseScreen {
         for (Star star : stars) {
             star.resize(worldBounds);
         }
-        ship.resize(worldBounds);
+        myShip.resize(worldBounds);
     }
 
     @Override
@@ -80,25 +80,25 @@ public class GameScreen extends BaseScreen {
 
     @Override
     public boolean keyDown(int keycode) {
-        ship.keyDown(keycode);
+        myShip.keyDown(keycode);
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        ship.keyUp(keycode);
+        myShip.keyUp(keycode);
         return false;
     }
 
     @Override
     public boolean touchDown(Vector2 touch, int pointer, int button) {
-        ship.touchDown(touch, pointer, button);
+        myShip.touchDown(touch, pointer, button);
         return false;
     }
 
     @Override
     public boolean touchUp(Vector2 touch, int pointer, int button) {
-        ship.touchUp(touch, pointer, button);
+        myShip.touchUp(touch, pointer, button);
         return false;
     }
 
@@ -107,7 +107,7 @@ public class GameScreen extends BaseScreen {
         for (Star star : stars) {
             star.update(delta);
         }
-        ship.update(delta);
+        myShip.update(delta);
         bulletPool.updateActiveSprites(delta);
         asteroidPool.updateActiveSprites(delta);
 
@@ -127,7 +127,7 @@ public class GameScreen extends BaseScreen {
         for (Star star : stars) {
             star.draw(batch);
         }
-        ship.draw(batch);
+        myShip.draw(batch);
         bulletPool.drawActiveSprites(batch);
         asteroidPool.drawActiveSprites(batch);
         batch.end();

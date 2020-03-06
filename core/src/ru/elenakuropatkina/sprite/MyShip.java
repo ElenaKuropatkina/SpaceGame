@@ -11,7 +11,7 @@ import ru.elenakuropatkina.math.Rnd;
 import ru.elenakuropatkina.pool.BulletPool;
 
 
-public class Ship extends Sprite {
+public class MyShip extends Sprite {
 
     private static final int INVALID_POINTER = -1;
 
@@ -34,7 +34,7 @@ public class Ship extends Sprite {
     private float animateTimer;
     private float animateInterval = 0.3f;
 
-    public Ship(TextureAtlas atlas, BulletPool bulletPool, Sound sound) {
+    public MyShip(TextureAtlas atlas, BulletPool bulletPool, Sound sound) {
         super(atlas.findRegion("shipMain"), 1, 2, 2);
         this.bulletPool = bulletPool;
         this.sound = sound;
@@ -66,7 +66,7 @@ public class Ship extends Sprite {
         if (animateTimer >= animateInterval) {
             animateTimer = 0.1f;
             shoot();
-            sound.play(0.03f);
+            sound.play(0.5f);
         }
     }
 

@@ -69,12 +69,16 @@ public class BaseScreen implements Screen, InputProcessor {
 
     @Override
     public void pause() {
+
         System.out.println("pause");
+        music.pause();
     }
 
     @Override
     public void resume() {
+
         System.out.println("resume");
+        music.play();
     }
 
     @Override
