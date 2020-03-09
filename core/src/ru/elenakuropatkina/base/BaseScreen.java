@@ -18,7 +18,7 @@ public class BaseScreen implements Screen, InputProcessor {
     protected Music music;
 
     private Rect screenBounds;
-    private Rect worldBounds;
+    protected Rect worldBounds;
     private Rect glBounds;
 
     private Vector2 touch;

@@ -82,9 +82,7 @@ public abstract class Sprite extends Rect {
         this.destroyed = true;
     }
 
-    public void flushDestroy() {
-        this.destroyed = false;
-    }
+    public void flushDestroy() { this.destroyed = false;  }
 
     public boolean isDestroyed() {
         return destroyed;
