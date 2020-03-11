@@ -3,7 +3,6 @@ package ru.elenakuropatkina.sprite;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import ru.elenakuropatkina.base.Ship;
@@ -25,7 +24,7 @@ public class MyShip extends Ship {
     public MyShip(TextureAtlas atlas, BulletPool bulletPool, Sound sound, ExplosionPool explosionPool) {
         super(atlas.findRegion("shipMain"), 1, 2, 2);
         this.v = new Vector2();
-        this.v0 = new Vector2(0.5f, 0);
+        this.v0 = new Vector2(0.7f, 0);
         this.bulletPool = bulletPool;
         this.explosionPool = explosionPool;
         this.sound = sound;
@@ -34,7 +33,7 @@ public class MyShip extends Ship {
         this.bulletPos = new Vector2();
         this.bulletHeight = 0.01f;
         this.damage = 1;
-        this.hp = 100;
+        this.hp = 30;
         this.reloadInterval = 0.2f;
         this.reloadTimer = Rnd.nextFloat(0, 1f);
     }
@@ -133,6 +132,13 @@ public class MyShip extends Ship {
                 }
                 break;
         }
+    }
+
+    public boolean isBulletCollision(Rect bullet) {
+        return !(bullet.getRight() < getLeft()
+                || bullet.getLeft() > getRight()
+                || bullet.getBottom() > pos.y
+                || bullet.getTop() < getBottom());
     }
 
     private void moveRight() {

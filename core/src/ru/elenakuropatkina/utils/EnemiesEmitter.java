@@ -11,28 +11,28 @@ import ru.elenakuropatkina.sprite.Enemy;
 
 public class EnemiesEmitter {
 
-    private static final float SMALL_ENEMY_HEIGHT = 0.16f;
+    private static final float SMALL_ENEMY_HEIGHT = 0.14f;
     private static final float SMALL_ENEMY_BULLET_HEIGHT = 0.01f;
-    private static final float SMALL_ENEMY_BULLET_VY = -0.32f;
+    private static final float SMALL_ENEMY_BULLET_VY = -0.3f;
     private static final float SMALL_ENEMY_RELOAD_INTERVAL = 3f;
     private static final int SMALL_ENEMY_DAMAGE = 1;
-    private static final int SMALL_ENEMY_HP = 1;
+    private static final int SMALL_ENEMY_HP = 3;
 
-    private static final float MEDIUM_ENEMY_HEIGHT = 0.20f;
+    private static final float MEDIUM_ENEMY_HEIGHT = 0.18f;
     private static final float MEDIUM_ENEMY_BULLET_HEIGHT = 0.015f;
-    private static final float MEDIUM_ENEMY_BULLET_VY = -0.2f;
-    private static final int MEDIUM_ENEMY_DAMAGE = 5;
+    private static final float MEDIUM_ENEMY_BULLET_VY = -0.22f;
+    private static final int MEDIUM_ENEMY_DAMAGE = 3;
     private static final float MEDIUM_ENEMY_RELOAD_INTERVAL = 4f;
-    private static final int MEDIUM_ENEMY_HP = 5;
+    private static final int MEDIUM_ENEMY_HP = 7;
 
     private static final float BIG_ENEMY_HEIGHT = 0.28f;
-    private static final float BIG_ENEMY_BULLET_HEIGHT = 0.025f;
-    private static final float BIG_ENEMY_BULLET_VY = -0.2f;
+    private static final float BIG_ENEMY_BULLET_HEIGHT = 0.02f;
+    private static final float BIG_ENEMY_BULLET_VY = -0.17f;
     private static final int BIG_ENEMY_DAMAGE = 10;
     private static final float BIG_ENEMY_RELOAD_INTERVAL = 1f;
     private static final int BIG_ENEMY_HP = 10;
 
-    private float generateInterval = 5f;
+    private float generateInterval = 2f;
     private float generateTimer;
 
     private final TextureRegion[] smallEnemyRegion;
@@ -57,11 +57,11 @@ public class EnemiesEmitter {
 
     public void generate(float delta){
         generateTimer += delta;
-        if(generateTimer >= generateInterval){
+        if(generateTimer >= generateInterval) {
             generateTimer = 0;
             Enemy enemy = enemyPool.obtain();
             float type = (float) Math.random();
-            if (type < 0.4f) {
+            if (type < 0.5f) {
                 enemy.set(
                         smallEnemyRegion,
                         smallEnemyV,
@@ -73,7 +73,7 @@ public class EnemiesEmitter {
                         SMALL_ENEMY_HEIGHT,
                         SMALL_ENEMY_HP
                 );
-            } else if (type < 0.7f) {
+            } else if (type < 0.9f) {
                 enemy.set(
                         mediumEnemyRegion,
                         mediumEnemyV,
@@ -86,6 +86,7 @@ public class EnemiesEmitter {
                         MEDIUM_ENEMY_HP
 
                 );
+
             } else {
                 enemy.set(
                         bigEnemyRegion,
@@ -98,8 +99,8 @@ public class EnemiesEmitter {
                         BIG_ENEMY_HEIGHT,
                         BIG_ENEMY_HP
                 );
-
             }
+
 
             enemy.setBottom(worldBounds.getTop());
             enemy.pos.x = Rnd.nextFloat(worldBounds.getLeft() + enemy.getHalfWidth(), worldBounds.getRight() - enemy.getHalfWidth());

@@ -8,26 +8,27 @@ import ru.elenakuropatkina.math.Rect;
 import ru.elenakuropatkina.screen.GameScreen;
 
 
-public class ButtonPlay extends ScaledButton {
-
-    private static final float PADDING = 0.1f;
+public class ButtonNewGame extends ScaledButton {
 
     private final Game game;
 
-    public ButtonPlay(TextureAtlas atlas, Game game) {
-        super(atlas.findRegion("play"));
+    public ButtonNewGame(TextureAtlas atlas, Game game) {
+        super(atlas.findRegion("newGame"));
         this.game = game;
     }
 
     @Override
     public void resize(Rect worldBounds) {
-        setHeightProportion(0.2f);
-        setLeft(worldBounds.getLeft() + PADDING);
-        setBottom(worldBounds.getBottom() + PADDING);
+        super.resize(worldBounds);
+        setHeightProportion(0.07f);
+        setTop(-0.05f);
     }
 
     @Override
     public void action() {
+        System.out.println("NEW_GAME");
         game.setScreen(new GameScreen(game));
+
     }
 }
+
