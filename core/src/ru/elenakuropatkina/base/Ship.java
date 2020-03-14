@@ -62,6 +62,10 @@ public class Ship extends Sprite {
         boom();
     }
 
+    public void destroyOutOfWorld() {
+        super.destroy();
+    }
+
     public void damage(int damage) {
         this.hp -= damage;
         if (hp <= 0) {

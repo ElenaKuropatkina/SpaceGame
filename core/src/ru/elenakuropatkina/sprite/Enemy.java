@@ -35,7 +35,7 @@ public class Enemy extends Ship {
             this.reloadTimer = reloadInterval*0.9f;
         }
         if (getTop() < worldBounds.getBottom()) {
-            destroy();
+            destroyOutOfWorld();
         }
     }
 

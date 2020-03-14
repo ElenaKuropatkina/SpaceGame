@@ -38,9 +38,9 @@ public class MenuScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
-        bg = new Texture("bg.jpg");
+        bg = new Texture("texture/bg.jpg");
         background = new Background(bg);
-        atlas = new TextureAtlas(Gdx.files.internal("atlasMenu.pack"));
+        atlas = new TextureAtlas(Gdx.files.internal("texture/atlasMenu.pack"));
         stars = new Star[STAR_COUNT];
         for (int i = 0; i < STAR_COUNT; i++) {
             stars[i] = new Star(atlas);

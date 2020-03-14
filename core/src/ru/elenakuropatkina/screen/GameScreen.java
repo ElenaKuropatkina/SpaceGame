@@ -64,11 +64,11 @@ public class GameScreen extends BaseScreen {
     @Override
     public void show() {
         super.show();
-        bg = new Texture("bg.jpg");
+        bg = new Texture("texture/bg.jpg");
         background = new Background(bg);
-        atlas = new TextureAtlas(Gdx.files.internal("atlasGame.pack"));
-        atlasMenu = new TextureAtlas(Gdx.files.internal("atlasMenu.pack"));
-        atlasTest = new TextureAtlas(Gdx.files.internal("mainAtlas.tpack"));
+        atlas = new TextureAtlas(Gdx.files.internal("texture/atlasGame.pack"));
+        atlasMenu = new TextureAtlas(Gdx.files.internal("texture/atlasMenu.pack"));
+        atlasTest = new TextureAtlas(Gdx.files.internal("texture/mainAtlas.tpack"));
         soundBullet = Gdx.audio.newSound(Gdx.files.internal("sounds/bullet.wav"));
         soundLaser = Gdx.audio.newSound(Gdx.files.internal("sounds/laser.wav"));
         soundExplosion = Gdx.audio.newSound(Gdx.files.internal("sounds/explosion.wav"));
