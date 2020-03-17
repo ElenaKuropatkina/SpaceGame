@@ -24,6 +24,7 @@ public class Background extends Sprite {
         this.pos.set(worldBounds.pos);
     }
 
+
     @Override
     public void update(float delta) {
 
