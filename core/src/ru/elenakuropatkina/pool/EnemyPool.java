@@ -14,6 +14,7 @@ public class EnemyPool extends SpritesPool<Enemy> {
     private Rect worldBounds;
 
     public EnemyPool(BulletPool bulletPool, ExplosionPool explosionPool, Sound sound, Rect worldBounds) {
+
         this.bulletPool = bulletPool;
         this.explosionPool = explosionPool;
         this.sound = sound;
@@ -22,6 +23,7 @@ public class EnemyPool extends SpritesPool<Enemy> {
 
     @Override
     protected Enemy newObject() {
+
         return new Enemy(bulletPool, explosionPool, sound, worldBounds);
     }
 }

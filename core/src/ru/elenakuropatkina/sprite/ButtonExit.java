@@ -8,21 +8,24 @@ import ru.elenakuropatkina.math.Rect;
 
 public class ButtonExit extends ScaledButton {
 
-    private static final float PADDING = 0.1f;
+    private static final float PADDING = 0.07f;
 
     public ButtonExit(TextureAtlas atlas) {
+
         super(atlas.findRegion("exit"));
     }
 
     @Override
     public void resize(Rect worldBounds) {
-        setHeightProportion(0.2f);
+
+        setHeightProportion(0.18f);
         setRight(worldBounds.getRight() - PADDING);
         setBottom(worldBounds.getBottom() + PADDING);
     }
 
     @Override
     public void action() {
+
         Gdx.app.exit();
     }
 }

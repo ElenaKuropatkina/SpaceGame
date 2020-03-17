@@ -14,6 +14,7 @@ public class Enemy extends Ship {
     private final Vector2 descentV;
 
     public Enemy(BulletPool bulletPool, ExplosionPool explosionPool, Sound sound, Rect worldBounds) {
+
         this.bulletPool = bulletPool;
         this.explosionPool = explosionPool;
         this.sound = sound;
@@ -27,6 +28,7 @@ public class Enemy extends Ship {
 
     @Override
     public void update(float delta) {
+
         bulletPos.set(pos.x, getBottom());
         super.update(delta);
         if (getTop() < worldBounds.getTop()) {
@@ -64,6 +66,7 @@ public class Enemy extends Ship {
     }
 
     public boolean isBulletCollision(Rect bullet) {
+
         return !(bullet.getRight() < getLeft()
                 || bullet.getLeft() > getRight()
                 || bullet.getBottom() > getTop()

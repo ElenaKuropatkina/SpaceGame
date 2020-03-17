@@ -22,6 +22,7 @@ public class MyShip extends Ship {
     private int rightPointer = INVALID_POINTER;
 
     public MyShip(TextureAtlas atlas, BulletPool bulletPool, Sound sound, ExplosionPool explosionPool) {
+
         super(atlas.findRegion("shipMain"), 1, 2, 2);
         this.v = new Vector2();
         this.v0 = new Vector2(0.7f, 0);
@@ -33,13 +34,14 @@ public class MyShip extends Ship {
         this.bulletPos = new Vector2();
         this.bulletHeight = 0.01f;
         this.damage = 1;
-        this.hp = 30;
+        this.hp = 50;
         this.reloadInterval = 0.2f;
         this.reloadTimer = Rnd.nextFloat(0, 1f);
     }
 
     @Override
     public void resize(Rect worldBounds) {
+
         this.worldBounds = worldBounds;
         setHeightProportion(0.15f);
         setBottom(worldBounds.getBottom() + 0.05f);
@@ -47,6 +49,7 @@ public class MyShip extends Ship {
 
     @Override
     public void update(float delta) {
+
         bulletPos.set(pos.x -0.004f, getTop());
         super.update(delta);
         if (getRight() > worldBounds.getRight()) {
@@ -62,6 +65,7 @@ public class MyShip extends Ship {
 
     @Override
     public void touchDown(Vector2 touch, int pointer, int button) {
+
         if (touch.x < worldBounds.pos.x) {
             if (leftPointer != INVALID_POINTER) {
                 return;
@@ -79,6 +83,7 @@ public class MyShip extends Ship {
 
     @Override
     public void touchUp(Vector2 touch, int pointer, int button) {
+
         if (pointer == leftPointer) {
             leftPointer = INVALID_POINTER;
             if (rightPointer != INVALID_POINTER) {
@@ -97,6 +102,7 @@ public class MyShip extends Ship {
     }
 
     public void keyDown(int keycode) {
+
         switch (keycode) {
             case Input.Keys.A:
             case Input.Keys.LEFT:
@@ -112,6 +118,7 @@ public class MyShip extends Ship {
     }
 
     public void keyUp(int keycode) {
+
         switch (keycode) {
             case Input.Keys.A:
             case Input.Keys.LEFT:
@@ -135,6 +142,7 @@ public class MyShip extends Ship {
     }
 
     public boolean isBulletCollision(Rect bullet) {
+
         return !(bullet.getRight() < getLeft()
                 || bullet.getLeft() > getRight()
                 || bullet.getBottom() > pos.y
@@ -142,14 +150,17 @@ public class MyShip extends Ship {
     }
 
     private void moveRight() {
+
         v.set(v0);
     }
 
     private void moveLeft() {
+
         v.set(v0).rotate(180);
     }
 
     private void stop() {
+
         v.setZero();
     }
 

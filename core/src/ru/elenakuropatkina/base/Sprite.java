@@ -21,6 +21,7 @@ public abstract class Sprite extends Rect {
     }
 
     public Sprite(TextureRegion region) {
+
         if (region == null) {
             throw new RuntimeException("Не задана текстура");
         }
@@ -29,6 +30,7 @@ public abstract class Sprite extends Rect {
     }
 
     public Sprite(TextureRegion region, int rows, int cols, int frames){
+
         if (region == null) {
             throw new RuntimeException("Не задана текстура");
         }
@@ -36,6 +38,7 @@ public abstract class Sprite extends Rect {
     }
 
     public void draw(SpriteBatch batch) {
+
         batch.draw(
                 regions[frame],
                 getLeft(), getBottom(),
@@ -47,6 +50,7 @@ public abstract class Sprite extends Rect {
     }
 
     public void setHeightProportion(float height) {
+
         setHeight(height);
         float aspect = regions[frame].getRegionWidth() / (float) regions[frame].getRegionHeight();
         setWidth(height * aspect);
@@ -63,28 +67,37 @@ public abstract class Sprite extends Rect {
     public void update(float delta) {};
 
     public float getAngle() {
+
         return angle;
     }
 
     public void setAngle(float angle) {
+
         this.angle = angle;
     }
 
     public float getScale() {
+
         return scale;
     }
 
     public void setScale(float scale) {
+
         this.scale = scale;
     }
 
     public void destroy() {
+
         this.destroyed = true;
     }
 
-    public void flushDestroy() { this.destroyed = false;  }
+    public void flushDestroy() {
+
+        this.destroyed = false;
+    }
 
     public boolean isDestroyed() {
+
         return destroyed;
     }
 }

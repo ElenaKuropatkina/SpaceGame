@@ -1,0 +1,68 @@
+
+atlasGame.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: y
+mediumEnemyShip
+  rotate: false
+  xy: 1, 990
+  size: 2000, 980
+  orig: 2000, 980
+  offset: 0, 0
+  index: -1
+bigEnemyShip
+  rotate: false
+  xy: 1, 69
+  size: 1800, 920
+  orig: 1800, 920
+  offset: 0, 0
+  index: -1
+smallEnemyShip
+  rotate: false
+  xy: 2003, 1520
+  size: 605, 450
+  orig: 605, 450
+  offset: 0, 0
+  index: -1
+shipMain
+  rotate: false
+  xy: 2610, 1670
+  size: 624, 300
+  orig: 624, 300
+  offset: 0, 0
+  index: -1
+asteroid
+  rotate: false
+  xy: 3236, 1751
+  size: 624, 219
+  orig: 624, 219
+  offset: 0, 0
+  index: -1
+gameOver
+  rotate: false
+  xy: 1, 0
+  size: 493, 68
+  orig: 493, 68
+  offset: 0, 0
+  index: -1
+newGame
+  rotate: false
+  xy: 2003, 1463
+  size: 365, 56
+  orig: 365, 56
+  offset: 0, 0
+  index: -1
+bulletEnemy
+  rotate: false
+  xy: 1803, 861
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+bullet
+  rotate: false
+  xy: 2610, 1653
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1

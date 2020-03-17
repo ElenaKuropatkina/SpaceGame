@@ -13,12 +13,14 @@ public class ExplosionPool extends SpritesPool<Explosion> {
     private Sound sound;
 
     public ExplosionPool(TextureAtlas atlas, Sound sound) {
+
         this.atlas = atlas;
         this.sound = sound;
     }
 
     @Override
     protected Explosion newObject() {
+
         return new Explosion(atlas, sound);
     }
 }

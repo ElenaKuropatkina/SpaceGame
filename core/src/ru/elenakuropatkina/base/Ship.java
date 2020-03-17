@@ -23,26 +23,29 @@ public class Ship extends Sprite {
     protected BulletPool bulletPool;
     protected ExplosionPool explosionPool;
     protected TextureRegion bulletRegion;
+
     protected Vector2 bulletV;
     protected Vector2 bulletPos;
     protected float bulletHeight;
+
     protected int damage;
     protected int hp;
 
     protected float reloadInterval;
     protected float reloadTimer;
-
     protected float damageAnimateTimer = DAMAGE_ANIMATE_INTERVAL;
 
     public Ship() {
     }
 
     public Ship(TextureRegion region, int rows, int cols, int frames) {
+
         super(region, rows, cols, frames);
     }
 
     @Override
     public void update(float delta) {
+
         pos.mulAdd(v, delta);
         reloadTimer += delta;
         if (reloadTimer >= reloadInterval) {
@@ -57,16 +60,19 @@ public class Ship extends Sprite {
 
     @Override
     public void destroy() {
+
         super.destroy();
         this.hp = 0;
         boom();
     }
 
     public void destroyOutOfWorld() {
+
         super.destroy();
     }
 
     public void damage(int damage) {
+
         this.hp -= damage;
         if (hp <= 0) {
             destroy();
@@ -76,18 +82,31 @@ public class Ship extends Sprite {
     }
 
     public int getDamage() {
+
         return damage;
     }
 
     protected void shoot() {
+
         sound.play();
         Bullet bullet = bulletPool.obtain();
         bullet.set(this, bulletRegion, bulletPos, bulletV, bulletHeight, worldBounds, damage);
     }
 
     public void boom() {
+
         Explosion explosion = explosionPool.obtain();
         explosion.set(getHeight(), pos);
+    }
+
+    public int getHp() {
+
+        return hp;
+    }
+
+    public Vector2 getV() {
+
+        return v;
     }
 }
 

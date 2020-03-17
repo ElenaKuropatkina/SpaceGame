@@ -32,11 +32,13 @@ public class MenuScreen extends BaseScreen {
     private ButtonPlay buttonPlay;
 
     public MenuScreen(Game game) {
+
         this.game = game;
     }
 
     @Override
     public void show() {
+
         super.show();
         bg = new Texture("texture/bg.jpg");
         background = new Background(bg);
@@ -53,6 +55,7 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void render(float delta) {
+
         super.render(delta);
         update(delta);
         draw();
@@ -60,6 +63,7 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void dispose() {
+
         bg.dispose();
         atlas.dispose();
         super.dispose();
@@ -67,6 +71,7 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public void resize(Rect worldBounds) {
+
         super.resize(worldBounds);
         background.resize(worldBounds);
         for (Star star : stars) {
@@ -78,6 +83,7 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public boolean touchDown(Vector2 touch, int pointer, int button) {
+
         buttonExit.touchDown(touch, pointer, button);
         buttonPlay.touchDown(touch, pointer, button);
         return false;
@@ -85,18 +91,21 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public boolean touchUp(Vector2 touch, int pointer, int button) {
+
         buttonExit.touchUp(touch, pointer, button);
         buttonPlay.touchUp(touch, pointer, button);
         return false;
     }
 
     private void update(float delta) {
+
         for (Star star : stars) {
             star.update(delta);
         }
     }
 
     private void draw() {
+
         Gdx.gl.glClearColor(0.5f, 0.9f, 0.4f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();

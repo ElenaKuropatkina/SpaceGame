@@ -15,11 +15,13 @@ public class Explosion extends Sprite {
     private Sound sound;
 
     public Explosion(TextureAtlas atlas, Sound sound) {
+
         super(atlas.findRegion("explosion"), 9, 9, 74);
         this.sound = sound;
     }
 
     public void set(float height, Vector2 pos) {
+
         this.pos.set(pos);
         setHeightProportion(height);
         sound.play();
@@ -27,6 +29,7 @@ public class Explosion extends Sprite {
 
     @Override
     public void update(float delta) {
+
         animateTimer += delta;
         if (animateTimer >= animateInterval) {
             animateTimer = 0f;
@@ -38,6 +41,7 @@ public class Explosion extends Sprite {
 
     @Override
     public void destroy() {
+
         super.destroy();
         frame = 0;
     }

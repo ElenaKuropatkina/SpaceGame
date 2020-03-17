@@ -13,6 +13,7 @@ public class Bullet extends Sprite {
     private Sprite owner;
 
     public Bullet() {
+
         regions = new TextureRegion[1];
         v = new Vector2();
     }
@@ -37,6 +38,7 @@ public class Bullet extends Sprite {
 
     @Override
     public void update(float delta) {
+
         this.pos.mulAdd(v, delta);
         if (isOutside(worldBounds)) {
             destroy();
@@ -44,10 +46,12 @@ public class Bullet extends Sprite {
     }
 
     public int getDamage() {
+
         return damage;
     }
 
     public Sprite getOwner() {
+
         return owner;
     }
 }

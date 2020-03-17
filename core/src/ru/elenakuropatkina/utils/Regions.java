@@ -4,15 +4,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Regions {
 
-    /**
-     * Разбивает TextureRegion на фреймы
-     * @param region регион
-     * @param rows количество строк
-     * @param cols количество столбцов
-     * @param frames количество фреймов
-     * @return массив регионов
-     */
     public static TextureRegion[] split(TextureRegion region, int rows, int cols, int frames) {
+
         if(region == null) throw new RuntimeException("Split null region");
         TextureRegion[] regions = new TextureRegion[frames];
         int tileWidth = region.getRegionWidth() / cols;

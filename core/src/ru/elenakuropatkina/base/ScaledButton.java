@@ -11,11 +11,13 @@ public abstract class ScaledButton extends Sprite {
     private boolean pressed;
 
     public ScaledButton(TextureRegion region) {
+
         super(region);
     }
 
     @Override
     public void touchDown(Vector2 touch, int pointer, int button) {
+
         if (pressed || !isMe(touch)) {
             return;
         }
@@ -26,6 +28,7 @@ public abstract class ScaledButton extends Sprite {
 
     @Override
     public void touchUp(Vector2 touch, int pointer, int button) {
+
         if (this.pointer != pointer || !pressed) {
             return;
         }
