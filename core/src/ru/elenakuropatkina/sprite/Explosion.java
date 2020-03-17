@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Vector2;
 
 import ru.elenakuropatkina.base.Sprite;
 
-
 public class Explosion extends Sprite {
 
     private float animateInterval = 0.017f;
